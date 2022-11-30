@@ -121,7 +121,7 @@
             this.Execute(ExpandComboBoxCommand, new Dictionary<string, object> { { "id", elementId } });
         }
 
-        public RemoteWebElement FindComboBoxSelctedItem(IWebElement element)
+        public IWebElement FindComboBoxSelctedItem(IWebElement element)
         {
             var elementId = TestHelper.GetElementId(element);
 
@@ -132,7 +132,7 @@
             return this.CreateElementFromResponse(response);
         }
 
-        public RemoteWebElement FindDataGridCell(IWebElement element, int row, int column)
+        public IWebElement FindDataGridCell(IWebElement element, int row, int column)
         {
             var elementId = TestHelper.GetElementId(element);
 
@@ -143,7 +143,7 @@
             return this.CreateElementFromResponse(response);
         }
 
-        public RemoteWebElement FindMenuItem(IWebElement element, string path)
+        public IWebElement FindMenuItem(IWebElement element, string path)
         {
             var response = this.Execute(
                 FindMenuItemCommand,
@@ -214,7 +214,7 @@
 
         #region Methods
 
-        private RemoteWebElement CreateElementFromResponse(Response response)
+        private IWebElement CreateElementFromResponse(Response response)
         {
             var elementDictionary = response.Value as Dictionary<string, object>;
             if (elementDictionary == null)
@@ -222,7 +222,7 @@
                 return null;
             }
 
-            return this.CreateElement((string)elementDictionary["ELEMENT"]);
+            return this.CreateElementFromResponse(elementDictionary["ELEMENT"] as Response);
         }
 
         #endregion

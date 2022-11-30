@@ -8,7 +8,7 @@
 
     #endregion
 
-    [Ignore]
+    [Ignore("Ignore a fixture")]
     public class ComboBoxCommandsTests : BaseTest<TestWebDriver>
     {
         #region Public Properties
