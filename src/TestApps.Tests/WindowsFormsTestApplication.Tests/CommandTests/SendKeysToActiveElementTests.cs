@@ -17,8 +17,7 @@
         {
             var textbox = this.MainWindow.FindElement(By.Id("TextBox1"));
             textbox.Click();
-            textbox.SendKeys("test");
-            // this.Driver.Keyboard.SendKeys("test");
+            this.Driver.Keyboard.SendKeys("test");
 
             Assert.AreEqual("TextBox1test", textbox.Text);
         }
